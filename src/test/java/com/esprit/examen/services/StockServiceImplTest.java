@@ -1,20 +1,24 @@
-/*package com.esprit.examen.services;
+package com.esprit.examen.services;
 
 import static org.junit.Assert.*;
 import java.util.List;
+
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.esprit.examen.entities.Stock;
+import com.esprit.examen.repositories.StockRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class StockServiceImplTest {
 	@Autowired
 	IStockService stockService;
-	
+	@Autowired
+	private StockRepository stockRepository;
 	@Test
 	public void testAddStock() {
 	//	List<Stock> stocks = stockService.retrieveAllStocks();
@@ -47,6 +51,28 @@ public class StockServiceImplTest {
 		stockService.deleteStock(savedStock.getIdStock());
 		assertNull(stockService.retrieveStock(savedStock.getIdStock()));
 	}
+	@Test
+	public void testupdateStock() {
 
+		Stock stock = stockRepository.findById(36L).get();
+		stock.setLibelleStock("stock update");
+        Stock updateCategorieProduit =  stockRepository.save(stock);
+        Assertions.assertThat(updateCategorieProduit.getLibelleStock()).isEqualTo("stock update");
+	}
+	@Test
+	 public void testretrieveStock(){
+
+		Stock cat = stockRepository.findById(37L).get();
+			System.out.println("le Stock est"+cat);
+	        Assertions.assertThat(cat.getIdStock()).isEqualTo(37L);
+
+	    }
+	@Test
+    public void testgetListOfStock(){
+
+        List<Stock> stock = stockRepository.findAll();
+        System.out.println("la liste de Stock est" +stock);
+        Assertions.assertThat(stock.size()).isGreaterThan(0);
+
+    }
 }
-*/

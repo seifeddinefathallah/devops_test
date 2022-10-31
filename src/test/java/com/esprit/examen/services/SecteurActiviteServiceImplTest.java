@@ -32,7 +32,7 @@ public class SecteurActiviteServiceImplTest {
 		//stockService.deleteStock(savedStock.getIdStock());
 		
 	} 
-	@Test
+	/*@Test
 	public void testdeleteSecteurActivite(){
 
 		SecteurActivite s = secteurActiviteRepository.findById(2L).get();
@@ -50,7 +50,7 @@ public class SecteurActiviteServiceImplTest {
         }
 
         Assertions.assertThat(secteur1).isNull();
-    }
+    }*/
 	/*@Test
 	public void testupdateSecteurActivite(){
 
