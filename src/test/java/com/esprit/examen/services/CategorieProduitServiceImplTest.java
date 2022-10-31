@@ -72,7 +72,7 @@ public class CategorieProduitServiceImplTest {
 
         List<CategorieProduit> cat = CategorieProduitRepo.findAll();
         System.out.println("la liste de CategorieProduit est" +cat);
-        Assertions.assertThat(cat.size()).isGreaterThan(0);
+        Assertions.assertThat(cat).isNotEmpty();
 
     }
 
