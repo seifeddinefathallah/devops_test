@@ -31,6 +31,7 @@ public class CategorieProduitServiceImplTest {
 		CategorieProduit cp;
 		cp = new CategorieProduit(null, "menage","100", null);
 		CategorieProduit savedCategorieProduits= CategorieProduitService.addCategorieProduit(cp);
+		System.out.println("le categorieproduit ajoute est" +cp);
 		assertNotNull(savedCategorieProduits.getLibelleCategorie());
 	}
 
