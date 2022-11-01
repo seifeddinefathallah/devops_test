@@ -29,9 +29,8 @@ public class ReglementServiceImpl implements IReglementService {
 
 	@Override
 	public Reglement retrieveReglement(Long id) {
-		Reglement reglement = reglementRepository.findById(id).orElse(null);
 		
-		return reglement;
+		return reglementRepository.findById(id).orElse(null);
 	}
 
 	@Override
