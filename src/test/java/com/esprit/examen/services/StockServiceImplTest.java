@@ -72,7 +72,7 @@ public class StockServiceImplTest {
 
         List<Stock> stock = stockRepository.findAll();
         System.out.println("la liste de Stock est" +stock);
-        Assertions.assertThat(stock.size()).isPositive();
+        Assertions.assertThat(stock).isNotEmpty();
 
     }
 }
