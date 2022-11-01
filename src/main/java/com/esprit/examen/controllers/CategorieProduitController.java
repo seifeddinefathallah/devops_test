@@ -28,7 +28,7 @@ public class CategorieProduitController {
 	@GetMapping("/retrieve-all-categorieProduit")
 	@ResponseBody
 	public List<CategorieProduit> getCategorieProduit() {
-		//List<CategorieProduit> list = categorieProduitService.retrieveAllCategorieProduits();
+		
 		return categorieProduitService.retrieveAllCategorieProduits();
 	}
 
@@ -43,7 +43,7 @@ public class CategorieProduitController {
 	@PostMapping("/add-categorieProduit")
 	@ResponseBody
 	public CategorieProduit addCategorieProduit(@RequestBody CategorieProduit cp) {
-		//CategorieProduit categorieProduit = categorieProduitService.addCategorieProduit(cp);
+		
 		return categorieProduitService.addCategorieProduit(cp);
 	}
 
