@@ -5,8 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 
 import org.junit.Test;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -14,11 +12,11 @@ import com.esprit.examen.entities.Operateur;
 import com.esprit.examen.services.OperateurServiceImpl;
 
 @SpringBootTest
-@TestMethodOrder(OrderAnnotation.class)
 public class OperatorServiceImplTest {
 
 	@Autowired
 	OperateurServiceImpl OperatorService;
+	
 	
 	@Test
 	public void testAddOperator() {
