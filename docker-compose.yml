@@ -13,28 +13,20 @@ services:
      - MYSQL_USER=root
      - MYSQL_PASSWORD=
     volumes:
-     - devops:/var/lib/mysql
+     - db:/var/lib/mysql
 
   spring_app:
     depends_on:
       - mysqldb
     build: ./spring-app
     restart: on-failure
-    env_file: ./.env
-    environment: 
-      SPRING_APPLICATION_JSON: '{
-        "spring.datasource.url"  : "jdbc:mysql://mysqldb:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?useSSL=false",
-        "spring.datasource.username" : "$MYSQLDB_USER",
-        "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
-        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-        "spring.jpa.hibernate.ddl-auto" : "update"
-      }'
+    environment:
+     - spring.datasource.url=jdbc:mysql://mysqldb:3306/devops?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     ports:
      - 8089:8089
     volumes:
       - .m2:/root/.m2
     stdin_open: true
     tty: true
-
 volumes:
-  devops:
+  db:
