@@ -27,7 +27,10 @@ public class SecteurActiviteServiceImplTest {
 	@Test
 	public void testaddSecteurActivite() {
 	
-		SecteurActivite s = new SecteurActivite(null, "stock test","azerty", null);
+		//SecteurActivite s = new SecteurActivite(null, "stock test","azerty", null);
+		SecteurActivite s = new SecteurActivite();
+		s.setCodeSecteurActivite("stock test");
+		s.setLibelleSecteurActivite("azerty");
 		SecteurActivite savedStock= secteurActiviteService.addSecteurActivite(s);
 		assertNotNull(savedStock.getLibelleSecteurActivite());
 		//stockService.deleteStock(savedStock.getIdStock());
