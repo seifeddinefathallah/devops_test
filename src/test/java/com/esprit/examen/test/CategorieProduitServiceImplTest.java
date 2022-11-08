@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+package com.esprit.examen.test;
 
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 import com.esprit.examen.entities.CategorieProduit;
 import com.esprit.examen.repositories.CategorieProduitRepository;
+import com.esprit.examen.services.ICategorieProduitService;
 
 import java.text.ParseException;
 

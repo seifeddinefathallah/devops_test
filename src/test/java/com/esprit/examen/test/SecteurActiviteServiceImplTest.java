@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+package com.esprit.examen.test;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.esprit.examen.entities.SecteurActivite;
 import com.esprit.examen.repositories.SecteurActiviteRepository;
+import com.esprit.examen.services.ISecteurActiviteService;
 
 
 @RunWith(SpringRunner.class)

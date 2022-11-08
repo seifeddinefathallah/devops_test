@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+package com.esprit.examen.test;
 
 import static org.junit.Assert.*;
 import java.util.List;
@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.StockRepository;
+import com.esprit.examen.services.IStockService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
