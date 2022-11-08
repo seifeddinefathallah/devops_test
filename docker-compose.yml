@@ -13,7 +13,7 @@ services:
      - MYSQL_USER=root
      - MYSQL_PASSWORD=
     volumes:
-     - db:/var/lib/mysql
+     - devops:/var/lib/mysql
 
   spring_app:
     depends_on:
