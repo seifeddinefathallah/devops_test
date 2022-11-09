@@ -17,7 +17,8 @@ services:
   app:
     depends_on:
       - mysqldb
-    build: ./spring-app
+    image: seifeddine7/spring-app:latest  
+    container_name: achatspring
     restart: on-failure
     env_file: ./.env
     ports:
