@@ -1,9 +1,8 @@
 package com.esprit.examen.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
-import java.util.List;
+
+
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +30,9 @@ public class OperatorServiceImplTest {
 	r.setNom("rrr");
     r.setPassword("123");
     r.setPrenom("rtt");
-    Operateur savedStock= OperatorService.addOperateur(r);
-	//Operateur savedop=OperatorService.addOperateur(r);
-//	assertEquals(expected+1, OperatorService.retrieveAllOperateurs().size());
+    Operateur savedO= OperatorService.addOperateur(r);
+	OperatorService.deleteOperateur(savedO.getIdOperateur());
+	
 		
 	} 
 	
