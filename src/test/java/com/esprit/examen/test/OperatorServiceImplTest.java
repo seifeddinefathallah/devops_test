@@ -30,8 +30,8 @@ public class OperatorServiceImplTest {
 	r.setNom("rrr");
     r.setPassword("123");
     r.setPrenom("rtt");
-    Operateur savedO= OperatorService.addOperateur(r);
-	OperatorService.deleteOperateur(savedO.getIdOperateur());
+  //  Operateur savedO= OperatorService.addOperateur(r);
+	//OperatorService.deleteOperateur(savedO.getIdOperateur());
 	
 		
 	} 
