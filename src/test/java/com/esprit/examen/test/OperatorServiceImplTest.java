@@ -2,64 +2,50 @@ package com.esprit.examen.test;
 
 
 
+import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.esprit.examen.entities.Operateur;
+import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.OperateurRepository;
-import com.esprit.examen.services.OperateurServiceImpl;
+import com.esprit.examen.services.IOperateurService;
+
+
+
+
 
 @SpringBootTest
 public class OperatorServiceImplTest {
 
 	@Autowired
-	OperateurServiceImpl OperatorService;
-	
+	IOperateurService operateurService;
 	@Autowired
-	OperateurRepository operateurRepo;
-	
+	private OperateurRepository opRepository;
 	@Test
-	public void testAddOperator() {
-	//	List<Operateur> operateurs = OperatorService.retrieveAllOperateurs();
-	//	int expected=operateurs.size();
-	Operateur r = new Operateur();
-	//r.setIdOperateur();
-	r.setNom("rrr");
-    r.setPassword("123");
-    r.setPrenom("rtt");
-  //  Operateur savedO= OperatorService.addOperateur(r);
-	//OperatorService.deleteOperateur(savedO.getIdOperateur());
-	
+	public void testAddOperateur() {
+	//	List<Stock> stocks = stockService.retrieveAllStocks();
+	//	int expected=stocks.size();
+		Operateur s = new Operateur("stock test","ee","100");
+		Operateur savedop= operateurService.addOperateur(s);
+		
+	//	assertEquals(expected+1, stockService.retrieveAllStocks().size());
+    	assertNotNull(savedop.getIdOperateur());
+		//operateurService.deleteOperateur(savedop.getIdOperateur());
 		
 	} 
 	
 	@Test
-	public void testUpdateOperateur() {
-		Operateur r = new Operateur();
-		r.setNom("rrr");
-	    r.setPassword("123");
-	    r.setPrenom("yyy");
-	   
-	}
-	
-	/*@Test
-	public void testDeleteOperateur() {
-	    Operateur c = new Operateur("Salhi", "Ahmed","aa11");
-       	Operateur operateurS = OperatorService.addOperateur(c);
-		OperatorService.deleteOperateur(operateurS.getIdOperateur());
-		assertNull(OperatorService.retrieveOperateur(operateurS.getIdOperateur()));
-	}*/
-	
-	/*@Test
-	 public void testretrieveOp(){
+    public void testgetListOfOperateur(){
 
-		Operateur op = operateurRepo.findById(1L).get();
-			System.out.println("l'operateur est"+op);
-	       // Assertions.assertThat(op.getIdStock()).isEqualTo(37L);
+        Iterable<Operateur> operateurs = opRepository.findAll();
+        System.out.println("la liste de operateur est" +operateurs);
+      //  Assertions.assertThat(stock).isNotEmpty();
 
-	    }*/
+    }
 	
 }

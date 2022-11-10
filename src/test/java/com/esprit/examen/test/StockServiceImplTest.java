@@ -1,37 +1,39 @@
 package com.esprit.examen.test;
 
-/*import static org.junit.Assert.*;
-
+import static org.junit.Assert.*;
 import java.util.List;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import com.esprit.examen.entities.Stock;
+import com.esprit.examen.repositories.StockRepository;
 import com.esprit.examen.services.IStockService;
 
-
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class StockServiceImplTest {
 	@Autowired
 	IStockService stockService;
-	
+	@Autowired
+	private StockRepository stockRepository;
 	@Test
 	public void testAddStock() {
-	List<Stock> stocks = stockService.retrieveAllStocks();
-	int expected=stocks.size();
-	Stock s = new Stock();
-	s.setLibelleStock("stock test");
-	s.setQte(10);
-	s.setQteMin(100);
-	Stock savedStock= stockService.addStock(s);
-	assertEquals(expected+1, stockService.retrieveAllStocks().size());
-	assertNotNull(savedStock.getLibelleStock());
-	stockService.deleteStock(savedStock.getIdStock());
+	//	List<Stock> stocks = stockService.retrieveAllStocks();
+	//	int expected=stocks.size();
+		Stock s = new Stock("stock test",10,100);
+		Stock savedStock= stockService.addStock(s);
+		
+	//	assertEquals(expected+1, stockService.retrieveAllStocks().size());
+		assertNotNull(savedStock.getLibelleStock());
+		stockService.deleteStock(savedStock.getIdStock());
 		
 	} 
 	
-	@Test
+/*	@Test
 	public void testAddStockOptimized() {
 
 		Stock s = new Stock("stock test",10,100);
@@ -39,16 +41,39 @@ public class StockServiceImplTest {
 		assertNotNull(savedStock.getIdStock());
 		assertSame(10, savedStock.getQte());
 		assertTrue(savedStock.getQteMin()>0);
-		stockService.deleteStock(savedStock.getIdStock());
+		//stockService.deleteStock(savedStock.getIdStock());
 		
-	} 
+	} */
 	
-	@Test
+	/*@Test
 	public void testDeleteStock() {
 		Stock s = new Stock("stock test",30,60);
 		Stock savedStock= stockService.addStock(s);
 		stockService.deleteStock(savedStock.getIdStock());
 		assertNull(stockService.retrieveStock(savedStock.getIdStock()));
-	}
+	}*/
+	/*@Test
+	public void testupdateStock() {
 
-}*/
+		Stock stock = stockRepository.findById(36L).get();
+		stock.setLibelleStock("stock update");
+        Stock updateCategorieProduit =  stockRepository.save(stock);
+        Assertions.assertThat(updateCategorieProduit.getLibelleStock()).isEqualTo("stock update");
+	}*/
+	/*@Test
+	 public void testretrieveStock(){
+
+		Stock cat = stockRepository.findById(37L).get();
+			System.out.println("le Stock est"+cat);
+	        Assertions.assertThat(cat.getIdStock()).isEqualTo(37L);
+
+	    }*/
+	/*@Test
+    public void testgetListOfStock(){
+
+        List<Stock> stock = stockRepository.findAll();
+        System.out.println("la liste de Stock est" +stock);
+      //  Assertions.assertThat(stock).isNotEmpty();
+
+    }*/
+}

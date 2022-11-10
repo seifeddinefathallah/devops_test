@@ -157,35 +157,14 @@
                  <artifactId>maven-resources-plugin</artifactId>
                  <version>3.1.0</version>
 			</plugin>	
-			<plugin>
-  				<groupId>org.jacoco</groupId>
- 			 	<artifactId>jacoco-maven-plugin</artifactId>
-  				<version>0.8.8</version>
-  				<executions>
-     				<!--first execution : for preparing JaCoCo runtime agent-->
-      				<execution>
-      					<id>prepare-agent</id>
-            			<goals>
-             				<goal>prepare-agent</goal>
-            			</goals>
-      				</execution>
-     				<!--second execution : for creating code coverage reports-->
-      				<execution>
-           				 <id>report</id>
-            			 <phase>test</phase>
-               			 <goals>
-               				<goal>report</goal>
-               			 </goals>
-        			</execution>
-   			   </executions>
- 		  </plugin>
+		
 		</plugins>
 	</build>
 	<distributionManagement>
 		<repository>
 			<id>deploymentRepo</id>
 			<name>Nexus Repository</name>
-			<url>http://192.168.1.26:8081/repository/maven-releases/</url>
+			<url>http://192.168.1.116:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
 	<reporting>
