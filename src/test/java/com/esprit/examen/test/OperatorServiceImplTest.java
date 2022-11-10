@@ -31,6 +31,7 @@ public class OperatorServiceImplTest {
 	r.setNom("rrr");
     r.setPassword("123");
     r.setPrenom("rtt");
+    Operateur savedStock= OperatorService.addOperateur(r);
 	//Operateur savedop=OperatorService.addOperateur(r);
 //	assertEquals(expected+1, OperatorService.retrieveAllOperateurs().size());
 		
