@@ -57,8 +57,8 @@ public class StockServiceImplTest {
 
 		Stock stock = stockRepository.findById(36L).get();
 		stock.setLibelleStock("stock update");
-        Stock updateCategorieProduit =  stockRepository.save(stock);
-        Assertions.assertThat(updateCategorieProduit.getLibelleStock()).isEqualTo("stock update");
+        Stock updateStock =  stockRepository.save(stock);
+        Assertions.assertThat(updateStock.getLibelleStock()).isEqualTo("stock update");
 	}
 	@Test
 	 public void testretrieveStock(){
