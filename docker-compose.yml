@@ -17,7 +17,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    image: seifeddine7/spring-app:latest  
+    image: seifeddine7/tpAchat:latest  
     container_name: achatspring
     restart: on-failure
     env_file: ./.env
