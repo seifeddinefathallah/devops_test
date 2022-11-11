@@ -38,7 +38,7 @@ public class OperateurServiceImplTest {
 		
 	} 
 	
-	/*@Test
+	@Test
 	public void testAddOperateurOptimized() {
 
 		Operateur o = new Operateur("rrr","10","tthfgvt");
@@ -78,5 +78,5 @@ public class OperateurServiceImplTest {
         System.out.println("la liste des operateurs est" +op);
       //  Assertions.assertThat(stock).isNotEmpty();
 
-    }*/
+    }
 }
