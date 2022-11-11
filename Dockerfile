@@ -1,5 +1,3 @@
-FROM maven:3.8.2-jdk-8
-EXPOSE 8089
-WORKDIR /spring-app
-ADD ./target/tpachatproject-1.0.jar tpachatproject-1.0.jar
-ENTRYPOINT ["java","-jar","tpachatproject-1.0.jar"]
+FROM maven:3.8.6-jdk-8
+COPY ./target/tpachat-1.0.jar tpachat-1.0.jar
+CMD ["java","-jar","tpachat-1.0.jar"]
