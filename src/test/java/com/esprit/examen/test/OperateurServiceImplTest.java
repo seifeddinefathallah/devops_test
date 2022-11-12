@@ -43,7 +43,7 @@ public class OperateurServiceImplTest {
 		
 	//	assertEquals(expected+1, stockService.retrieveAllStocks().size());
 		assertNotNull(savedStock.getLibelleStock());
-		//stockService.deleteStock(savedStock.getIdStock());
+		stockService.deleteStock(savedStock.getIdStock());
 		
 	} 
 	
@@ -51,7 +51,7 @@ public class OperateurServiceImplTest {
 	public void testAddop() {
 	//	List<Stock> stocks = stockService.retrieveAllStocks();
 	//	int expected=stocks.size();
-		Operateur s = new Operateur("styyyt","1055","rrrrr");
+		Operateur s = new Operateur("rayen","1055","rrrrr");
 		Operateur savedop= operateurService.addOperateur(s);
 		
 	//	assertEquals(expected+1, stockService.retrieveAllStocks().size());
