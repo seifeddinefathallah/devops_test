@@ -12,7 +12,7 @@ services:
     ports:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
-      - db:/var/lib/mysql
+      - tpachato:/var/lib/mysql
   app:
     image: rayenkharbeche/tpachatd
     depends_on:
