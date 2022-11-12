@@ -14,6 +14,7 @@ services:
     volumes:
       - db:/var/lib/mysql
   app:
+    image: rayenkharbeche/tpachatd
     depends_on:
       - mysqldb
     build: ./spring-app
