@@ -13,10 +13,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.esprit.examen.entities.Operateur;
 import com.esprit.examen.entities.Stock;
-import com.esprit.examen.repositories.OperateurRepository;
 import com.esprit.examen.repositories.StockRepository;
 import com.esprit.examen.services.IOperateurService;
 import com.esprit.examen.services.IStockService;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -30,6 +30,8 @@ public class OperateurServiceImplTest {
 	@Autowired
 	private StockRepository stockRepository;
 	
+
+
 	//@Autowired
 	//private OperateurRepository opRepository;
 	@Test
