@@ -17,11 +17,10 @@ services:
     image: rayenkharbeche/tpachatd
     depends_on:
       - mysqldb
-    build: ./spring-app
     restart: on-failure
     env_file: ./.env
     ports:
-      - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
+       - 8089:8089
     environment:
       SPRING_APPLICATION_JSON: '{
         "spring.datasource.url"  : "jdbc:mysql://mysqldb:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?useSSL=false",
@@ -36,4 +35,4 @@ services:
     tty: true
 
 volumes:
-  db:
+  tpachato:
