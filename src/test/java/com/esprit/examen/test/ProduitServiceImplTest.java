@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
- public class ProduitServiceImplTest {
+ class ProduitServiceImplTest {
 	@Mock
     ProduitRepository produitRepository;
     @InjectMocks

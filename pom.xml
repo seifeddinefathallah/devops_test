@@ -91,9 +91,17 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.8.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -197,6 +205,18 @@
         			</execution>
    			   </executions>
  		  </plugin>
+ 		  <plugin>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.2</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.2</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.1.0</version>
+			</plugin>
  		   <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
@@ -210,6 +230,7 @@
             </dependencies>
         </plugin>
 		</plugins>
+		<finalName>tpachat</finalName>
 	</build>
 	<distributionManagement>
 		<repository>

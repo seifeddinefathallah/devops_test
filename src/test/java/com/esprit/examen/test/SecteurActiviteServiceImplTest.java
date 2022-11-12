@@ -7,8 +7,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-
+import java.text.ParseException;
+import java.util.List;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
+import static org.junit.Assert.*;
 import com.esprit.examen.entities.SecteurActivite;
 import com.esprit.examen.repositories.SecteurActiviteRepository;
 import com.esprit.examen.services.ISecteurActiviteService;
@@ -16,6 +19,7 @@ import com.esprit.examen.services.ISecteurActiviteService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SecteurActiviteServiceImplTest {
 	@Autowired
 	ISecteurActiviteService secteurActiviteService;
@@ -23,42 +27,34 @@ public class SecteurActiviteServiceImplTest {
     private SecteurActiviteRepository secteurActiviteRepository;
 	
 	@Test
-	public void testaddSecteurActivite() {
-	
-		SecteurActivite s = new SecteurActivite(null, "stock test","azerty", null);
-		SecteurActivite savedStock= secteurActiviteService.addSecteurActivite(s);
-		assertNotNull(savedStock.getLibelleSecteurActivite());
-		
-	} 
-	/*@Test
-	public void testdeleteSecteurActivite(){
+    public void testAddSecteurActivite() throws ParseException {
+        SecteurActivite s = new SecteurActivite(null, "test","test", null);
+        SecteurActivite secteurActivite = secteurActiviteService.addSecteurActivite(s);
+        System.out.print("secteurActivite "+secteurActivite);
+        assertNotNull(secteurActivite.getIdSecteurActivite());
+        assertTrue(secteurActivite.getCodeSecteurActivite().length() > 0);
+        secteurActiviteService.deleteSecteurActivite(secteurActivite.getIdSecteurActivite());
+    }
 
-		SecteurActivite s = secteurActiviteRepository.findById(2L).get();
 
-		secteurActiviteRepository.delete(s);
 
-        //employeeRepository.deleteById(1L);
+    @Test
+    public void testDeleteSecteurActivite() throws ParseException {
+        SecteurActivite s = new SecteurActivite(null, "test", "test", null);
+        SecteurActivite  secteurActivite =secteurActiviteService.addSecteurActivite(s);
+        secteurActiviteService.deleteSecteurActivite( secteurActivite.getIdSecteurActivite());
+        assertNull(secteurActiviteService.retrieveSecteurActivite(secteurActivite.getIdSecteurActivite()));
+    }
 
-		SecteurActivite secteur1 = null;
 
-        Optional<SecteurActivite> optionalSecteur = secteurActiviteRepository.findById(2L);
 
-        if(optionalSecteur.isPresent()){
-        	secteur1 = optionalSecteur.get();
-        }
-
-        Assertions.assertThat(secteur1).isNull();
-    }*/
-	/*@Test
-	public void testupdateSecteurActivite(){
-
-		SecteurActivite secteur = secteurActiviteRepository.findById(1L).get();
-
-		SecteurActivite.setCodeSecteurActivite("azerty");
-
-		SecteurActivite updateSecteurActivite =  secteurActiviteRepository.save(secteur);
-
-        Assertions.assertThat(updateSecteurActivite.getEmail()).isEqualTo("ram@gmail.com");
-
-    }*/
+    @Test
+    public void testRetrieveAllSecteurs() throws ParseException {
+        List<SecteurActivite> secteurActivites = secteurActiviteService.retrieveAllSecteurActivite();
+        int expected =secteurActivites.size();
+        SecteurActivite s = new SecteurActivite(null, "test", "test", null);
+        SecteurActivite secteurActivite= secteurActiviteService.addSecteurActivite(s);
+        assertEquals(expected + 1, secteurActiviteService.retrieveAllSecteurActivite().size());
+        secteurActiviteService.deleteSecteurActivite(secteurActivite.getIdSecteurActivite());
+    }
 }
