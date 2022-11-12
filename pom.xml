@@ -217,18 +217,6 @@
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.1.0</version>
 			</plugin>
- 		   <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>3.0.0-M7</version>
-            <dependencies>
-                <dependency>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                    <version>5.4.0</version>
-                </dependency>
-            </dependencies>
-        </plugin>
 		</plugins>
 		<finalName>tpachat</finalName>
 	</build>
