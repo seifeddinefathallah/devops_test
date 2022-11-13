@@ -36,12 +36,12 @@ services:
         "spring.jpa.hibernate.ddl-auto" : "update"
       }'
     volumes:
-      - .m2:/root/maven-repo
+      - .app:/root/maven-repo
     stdin_open: true
     tty: true
 networks:
    spring-network:
      name: spring-network
 volumes:
-  app:
+  .app:
   devopss:
