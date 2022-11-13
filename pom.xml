@@ -159,11 +159,6 @@
 				<version>2.21.0</version>
 			</plugin>
 			<plugin>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.8.1</version>
-			</plugin>
-			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				 <configuration>
@@ -221,7 +216,7 @@
 		<repository>
 			<id>deploymentRepo</id>
 			<name>Nexus Repository</name>
-			<url>http://192.168.1.116:8081/repository/maven-releases/</url>
+			<url>http://192.168.1.118:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
 	<reporting>
