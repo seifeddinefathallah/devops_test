@@ -185,7 +185,7 @@
 		<repository>
 			<id>deploymentRepo</id>
 			<name>Nexus Repository</name>
-			<url>http://192.168.1.161:8081/repository/mvvn/</url>
+			<url>http://192.168.1.161:8081/repository/deploymentRepo/</url>
 		</repository>
 	</distributionManagement>
 	<reporting>
