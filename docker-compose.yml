@@ -3,7 +3,7 @@ version: "3"
 services:
   devops:
     image: mysql:5.7
-    container_name: devops
+    container_name: devo
     restart: unless-stopped
     networks:
       - spring-network
@@ -36,7 +36,7 @@ services:
         "spring.jpa.hibernate.ddl-auto" : "update"
       }'
     volumes:
-      - .m2:/root/.m2
+      - .m2:/root/maven-repo
     stdin_open: true
     tty: true
 networks:
