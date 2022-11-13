@@ -12,7 +12,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - devops:/var/lib/mysql
+      - devopss:/var/lib/mysql
   app:
     build:
       context: .
@@ -42,4 +42,4 @@ networks:
     name: spring-network
 volumes:
   .m2:
-  devops:
+  devopss:
