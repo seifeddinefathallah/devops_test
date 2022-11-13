@@ -5,6 +5,8 @@ services:
     image: mysql:5.7
     container_name: devops
     restart: unless-stopped
+    networks:
+      - spring-network
     env_file: ./.env
     environment:
       - MYSQL_ROOT_PASSWORD=root
@@ -38,9 +40,9 @@ services:
     stdin_open: true
     tty: true
 
-  networks:
-    spring-network:
-      name: spring-network
-  volumes:
-    .m2:
-    devopss:
+ networks:
+   spring-network:
+     name: spring-network
+ volumes:
+   .m2:
+   devopss:
