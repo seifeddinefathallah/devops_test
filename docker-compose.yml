@@ -3,6 +3,7 @@ version: "3"
 services:
   mysqldb:
     image: mysql:5.7
+    container_name: dbachat
     restart: unless-stopped
     env_file: ./.env
     environment:
@@ -11,8 +12,11 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - db:/var/lib/mysql
+      - devops:/var/lib/mysql
   app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       - mysqldb
     image: seifeddine7/spring-app:latest  
@@ -33,6 +37,9 @@ services:
       - .m2:/root/.m2
     stdin_open: true
     tty: true
-
+networks:
+  spring-network:
+    name: spring-network
 volumes:
-  db:
+  .m2:
+  devops:
