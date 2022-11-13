@@ -16,6 +16,7 @@ services:
     volumes:
       - devopss:/var/lib/mysql
   app:
+    working_dir: /spring-app
     build:
       context: .
       dockerfile: Dockerfile
@@ -36,12 +37,12 @@ services:
         "spring.jpa.hibernate.ddl-auto" : "update"
       }'
     volumes:
-      - .app:/root/maven-repo
+      - .m2:/root/maven-repo
     stdin_open: true
     tty: true
 networks:
    spring-network:
      name: spring-network
 volumes:
-  .app:
+  .m2:
   devopss:
