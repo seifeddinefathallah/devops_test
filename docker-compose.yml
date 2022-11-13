@@ -40,5 +40,4 @@ networks:
    spring-network:
      name: spring-network
 volumes:
-  .m2:
   devopss:
