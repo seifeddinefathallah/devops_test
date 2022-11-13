@@ -133,7 +133,7 @@
 				<version>2.21.0</version>
 				<configuration>
 					<testFailureIgnore>true</testFailureIgnore>
-					<packaging>jar</packaging>
+					
 				</configuration>
 			</plugin>
 			<plugin>
