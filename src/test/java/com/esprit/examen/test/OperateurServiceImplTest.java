@@ -43,7 +43,7 @@ public class OperateurServiceImplTest {
 		
 	//	assertEquals(expected+1, stockService.retrieveAllStocks().size());
 		assertNotNull(savedStock.getLibelleStock());
-		stockService.deleteStock(savedStock.getIdStock());
+	//	stockService.deleteStock(savedStock.getIdStock());
 		
 	} 
 	
@@ -51,7 +51,7 @@ public class OperateurServiceImplTest {
 	public void testAddop() {
 	//	List<Stock> stocks = stockService.retrieveAllStocks();
 	//	int expected=stocks.size();
-		Operateur s = new Operateur("rayen","1055","rrrrr");
+		Operateur s = new Operateur("rayen","seif","rrrrr");
 		Operateur savedop= operateurService.addOperateur(s);
 		
 	//	assertEquals(expected+1, stockService.retrieveAllStocks().size());
@@ -63,12 +63,12 @@ public class OperateurServiceImplTest {
 	@Test
 	public void testAddStockOptimized() {
 
-		Stock s = new Stock("stock test",10,100);
+		Stock s = new Stock("stock tttttt",10,100);
 		Stock savedStock= stockService.addStock(s);
 		assertNotNull(savedStock.getIdStock());
 		assertSame(10, savedStock.getQte());
 		assertTrue(savedStock.getQteMin()>0);
-		stockService.deleteStock(savedStock.getIdStock());
+		//stockService.deleteStock(savedStock.getIdStock());
 		
 	} 
 	
