@@ -3,7 +3,7 @@ version: "3"
 services:
   mysqldb:
     image: mysql:5.7
-    container_name: dbachat
+    container_name: devops
     restart: unless-stopped
     env_file: ./.env
     environment:
@@ -18,7 +18,7 @@ services:
       context: .
       dockerfile: Dockerfile
     depends_on:
-      - mysqldb
+      - devops
     image: seifeddine7/spring-app:latest  
     container_name: achatspring
     restart: on-failure
