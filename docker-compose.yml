@@ -16,10 +16,6 @@ services:
     volumes:
       - devopss:/var/lib/mysql
   app:
-    working_dir: /spring-app
-    build:
-      context: .
-      dockerfile: Dockerfile
     depends_on:
       - devops
     image: seifeddine7/spring-app:latest  
@@ -36,8 +32,13 @@ services:
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
         "spring.jpa.hibernate.ddl-auto" : "update"
       }'
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
 networks:
    spring-network:
      name: spring-network
 volumes:
+  .m2:
   devopss:
