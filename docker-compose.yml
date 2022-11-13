@@ -14,7 +14,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - devopss:/var/lib/mysql
+      - tpachato:/var/lib/mysql
   app:
     working_dir: /spring-app
     build:
@@ -22,7 +22,7 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - devops
-    image: seifeddine7/spring-app:latest  
+    image: rayenkharbeche/tpachatd  
     container_name: achatspring
     restart: on-failure
     env_file: ./.env
@@ -41,4 +41,4 @@ networks:
      name: spring-network
 volumes:
   .m2:
-  devopss:
+  tpachato:
