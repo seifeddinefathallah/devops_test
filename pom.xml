@@ -133,7 +133,7 @@
 				<version>2.21.0</version>
 				<configuration>
 					<testFailureIgnore>true</testFailureIgnore>
-					
+					<packaging>jar</packaging>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -186,7 +186,7 @@
 		<repository>
 			<id>deploymentRepo</id>
 			<name>Nexus Repository</name>
-			<url>http://192.168.1.161:8081/repository/deploymentRepo/</url>
+			<url>http://192.168.1.24:8081/repository/deploymentRepo/</url>
 		</repository>
 	</distributionManagement>
 	<reporting>
