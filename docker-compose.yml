@@ -36,10 +36,6 @@ services:
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
         "spring.jpa.hibernate.ddl-auto" : "update"
       }'
-    volumes:
-      - .m2:/root/maven-repo
-    stdin_open: true
-    tty: true
 networks:
    spring-network:
      name: spring-network
