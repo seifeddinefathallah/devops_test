@@ -14,7 +14,7 @@ services:
      - MYSQL_USER=root
      - MYSQL_PASSWORD=
     volumes:
-     - devops:/var/lib/mysql
+     - /home/mysql/data:/var/lib/mysql
 
   spring_app:
     image: seifeddine7/spring-app:latest

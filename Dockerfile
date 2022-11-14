@@ -1,4 +1,6 @@
-FROM openjdk:8
+FROM maven:3.8.2-jdk-8
+WORKDIR /spring-app
 EXPOSE 8089
-COPY  target/tpachat.jar tpachat.jar
-CMD ["java","-jar","/tpachat.jar"]
+COPY  . tpachat.jar
+RUN mvn clean install
+CMD ["java","-jar","/tpachat.jar"]mvn spring-boot:run
