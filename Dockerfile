@@ -1,5 +1,3 @@
-FROM maven:3.8.2-jdk-8
-WORKDIR /spring-app
-COPY . .
-RUN mvn clean install -Dmaven.test.skip=true
-CMD mvn  spring-boot:run
+FROM openjdk:8
+COPY ./target/tpachat.jar tpachat-1.0.jar
+CMD ["java","-jar","tpachat-1.0.jar"]
