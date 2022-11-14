@@ -18,7 +18,7 @@ services:
     depends_on:
       - mysqldb
     image: rayenkharbeche/tpachatd  
-    container_name: achatspring
+    container_name: tpachatd
     restart: on-failure
     env_file: ./.env
     ports:
