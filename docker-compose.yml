@@ -17,7 +17,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    working_dir: /var/lib/jenkins/workspace/docker-compose.yml
+    working_dir: /var/lib/jenkins/workspace/TpAcharPip@2 
     build:
       context: .
       dockerfile: Dockerfile
