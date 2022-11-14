@@ -18,7 +18,7 @@ import com.esprit.examen.services.StockServiceImpl;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-class StockServiceImplMock {
+class StockServiceImplMockTest {
 	 @Mock
 	    StockRepository stockRepository;
 	    @InjectMocks
