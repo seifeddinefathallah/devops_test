@@ -11,11 +11,11 @@ services:
     ports:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
-      - db:/var/lib/mysql
+      - devops:/var/lib/mysql
   app:
     depends_on:
       - mysqldb
-    build: ./spring-app
+    build: skander2310/spring-app
     restart: on-failure
     env_file: ./.env
     ports:
@@ -34,4 +34,4 @@ services:
     tty: true
 
 volumes:
-  db:
+  devops:
