@@ -1,43 +1,53 @@
-version: "3.3"
+version: "3.7"
 
 services:
-  devops:
-    image: mysql:5.7
-    container_name: devo
-    restart: unless-stopped
+
+  app:
+    working_dir: /spring-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: seifeddine7/spring-app:latest
+    restart: on-failure
+    container_name: achat
+    depends_on:
+      - dbSpring
     networks:
       - spring-network
-    env_file: ./.env
+    ports:
+      - 8089:8089
+    environment:
+      SPRING_APPLICATION_JSON: '{
+            "spring.datasource.url"  : "jdbc:mysql://dbSpring:3306/dbachat?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false&createDatabaseIfNotExists=true",
+            "spring.datasource.username" : "root",
+            "spring.datasource.password" : "root",
+            "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+            "spring.jpa.hibernate.ddl-auto" : "update"
+          }'
+    volumes:
+      - .m2:/root/maven-repo
+    stdin_open: true
+    tty: true
+
+
+  dbSpring:
+    image: mysql:5.7
+    restart: unless-stopped
+    container_name: dbSpring
+    networks:
+      - spring-network
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=devops
     ports:
       - 3306:3306
     volumes:
-      - devopss:/var/lib/mysql
-  app:
-    depends_on:
-      - devops
-    image: seifeddine7/spring-app:latest  
-    container_name: achatspring
-    restart: on-failure
-    env_file: ./.env
-    ports:
-      - 8089:8089
-    environment:
-      SPRING_APPLICATION_JSON: '{
-        "spring.datasource.url"  : "jdbc:mysql://mysqldb:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?useSSL=false",
-        "spring.datasource.username" : "$MYSQLDB_USER",
-        "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
-        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-        "spring.jpa.hibernate.ddl-auto" : "update"
-      }'
-    volumes:
-      - .m2:/root/.m2
-    stdin_open: true
-    tty: true
+      - tpstockdb:/var/lib/mysql
+
 networks:
-   spring-network:
-     name: spring-network
+  spring-network:
+    name: spring-network
+
 volumes:
-  devopss:
+  .m2:
+  tpstockdb:
