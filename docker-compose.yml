@@ -16,7 +16,7 @@ services:
     image: rayenkharbeche/tpachatd
     depends_on:
       - mysqldb
-    build: ./spring-app
+    build: ./tpachatd
     restart: on-failure
     env_file: ./.env
     ports:
