@@ -17,7 +17,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    image: rayenkharbeche/tpachatd  
+    image: rayenkharbeche/devops  
     container_name: tpachatd
     restart: on-failure
     env_file: ./.env
