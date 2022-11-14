@@ -17,7 +17,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    working_dir: /spring-app
+    working_dir: /var/lib/jenkins/workspace/docker-compose.yml
     build:
       context: .
       dockerfile: Dockerfile
