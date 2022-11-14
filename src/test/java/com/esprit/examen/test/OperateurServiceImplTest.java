@@ -24,12 +24,10 @@ import com.esprit.examen.services.IStockService;
 public class OperateurServiceImplTest {
 
 	
-	@Autowired
-	IStockService stockService;
+	
 	@Autowired
 	IOperateurService operateurService;
-	@Autowired
-	private StockRepository stockRepository;
+
 	
     @Autowired
     private OperateurRepository opRepository;
@@ -54,19 +52,12 @@ public class OperateurServiceImplTest {
 	public void testDeleteOperateur() {
 		Operateur s = new Operateur("rayen","seif","rrrrr");
 		Operateur savedop= operateurService.addOperateur(s);
-		stockService.deleteStock(savedop.getIdOperateur());
-		//assertNull(stockService.retrieveStock(savedop.getIdOperateur()));
+		operateurService.deleteOperateur(savedop.getIdOperateur());
+		assertNull(operateurService.retrieveOperateur(savedop.getIdOperateur()));
 	}
 	
 	
-	@Test
-	public void testupdateStock() {
-
-		Stock stock = stockRepository.findById(36L).get();
-		stock.setLibelleStock("stock update");
-        Stock updateStock =  stockRepository.save(stock);
-        Assertions.assertThat(updateStock.getLibelleStock()).isEqualTo("stock update");
-	}
+	
 	
 	@Test
 	public void testupdateOperateur() {
@@ -76,22 +67,7 @@ public class OperateurServiceImplTest {
         Operateur updateOp =  opRepository.save(op);
         Assertions.assertThat(updateOp.getPassword()).isEqualTo("888");
 	}
-	/*@Test
-	 public void testretrieveStock(){
-
-		Stock cat = stockRepository.findById(37L).get();
-			System.out.println("le Stock est"+cat);
-	        Assertions.assertThat(cat.getIdStock()).isEqualTo(37L);
-
-	    }*/
-	@Test
-    public void testgetListOfStock(){
-
-        List<Stock> stock = stockRepository.findAll();
-        System.out.println("la liste de Stock est" +stock);
-        Assertions.assertThat(stock).isNotEmpty();
-
-    }
+	
 	
 	@Test
     public void testgetListOfOperateur(){
