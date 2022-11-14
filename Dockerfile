@@ -3,4 +3,4 @@ WORKDIR /spring-app
 EXPOSE 8089
 COPY  . tpachat.jar
 RUN mvn clean install
-CMD ["java","-jar","/tpachat.jar"]mvn spring-boot:run
+CMD mvn spring-boot:run
