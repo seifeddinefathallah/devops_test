@@ -1,53 +1,29 @@
-version: "3.7"
-
+version: "3"
 services:
-
-  app:
-    working_dir: /spring-app
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: seifeddine7/spring-app:latest
-    restart: on-failure
-    container_name: achat
-    depends_on:
-      - dbSpring
-    networks:
-      - spring-network
-    ports:
-      - 8089:8089
-    environment:
-      SPRING_APPLICATION_JSON: '{
-            "spring.datasource.url"  : "jdbc:mysql://dbSpring:3306/dbachat?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false&createDatabaseIfNotExists=true",
-            "spring.datasource.username" : "root",
-            "spring.datasource.password" : "root",
-            "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-            "spring.jpa.hibernate.ddl-auto" : "update"
-          }'
-    volumes:
-      - .m2:/root/maven-repo
-    stdin_open: true
-    tty: true
-
-
-  dbSpring:
-    image: mysql:5.7
+  mysqldb:
+    container_name: mysqldb
+    image: mysql/mysql-server:8.0
     restart: unless-stopped
-    container_name: dbSpring
-    networks:
-      - spring-network
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=devops
     ports:
-      - 3306:3306
+     - 3306:3306
+    environment:
+     - MYSQL_ROOT_PASSWORD=root
+     - MYSQL_DATABASE=devops
+     - MYSQL_USER=root
+     - MYSQL_PASSWORD=
     volumes:
-      - tpstockdb:/var/lib/mysql
+     - devops:/var/lib/mysql
 
-networks:
-  spring-network:
-    name: spring-network
+  spring_app:
+    image: elmoatazbelleh/achat:latest
+    container_name: achatspring
+    restart: on-failure
+    environment:
+     - spring.datasource.url=jdbc:mysql://mysqldb:3306/devops?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    ports:
+     - 8089:8089
+    depends_on:
+     - mysqldb
 
 volumes:
-  .m2:
-  tpstockdb:
+  devops:
