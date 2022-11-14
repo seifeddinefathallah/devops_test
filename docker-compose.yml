@@ -1,33 +1,53 @@
-version: "3"
+version: "3.7"
+
 services:
-  mysqldb:
-    container_name: mysqldb
-    image: mysql:5.7
-    restart: unless-stopped
+
+  app:
+    working_dir: /spring-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: seifeddine7/spring-app:latest
+    restart: on-failure
+    container_name: achat
+    depends_on:
+      - dbSpring
     networks:
       - spring-network
     ports:
-     - 3306:3306
+      - 8089:8089
     environment:
-     - MYSQL_ROOT_PASSWORD=root
-     - MYSQL_DATABASE=devops
-     - MYSQL_USER=root
-     - MYSQL_PASSWORD=
+      SPRING_APPLICATION_JSON: '{
+            "spring.datasource.url"  : "jdbc:mysql://dbSpring:3306/devops?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false&createDatabaseIfNotExists=true",
+            "spring.datasource.username" : "root",
+            "spring.datasource.password" : "root",
+            "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+            "spring.jpa.hibernate.ddl-auto" : "update"
+          }'
     volumes:
-     - /home/mysql/data:/var/lib/mysql
+      - .m2:/root/maven-repo
+    stdin_open: true
+    tty: true
 
-  spring_app:
-    image: seifeddine7/spring-app:latest
-    container_name: achatspring
-    restart: on-failure
+
+  dbSpring:
+    image: mysql:5.7
+    restart: unless-stopped
+    container_name: dbSpring
+    networks:
+      - spring-network
     environment:
-     - spring.datasource.url=jdbc:mysql://mysqldb:3306/devops?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=devops
     ports:
-     - 8089:8089
-    depends_on:
-     - mysqldb
+      - 3306:3306
+    volumes:
+      - tpstockdb:/var/lib/mysql
+
 networks:
   spring-network:
     name: spring-network
+
 volumes:
-  devops:
+  .m2:
+  tpstockdb:
