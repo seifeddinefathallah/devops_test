@@ -17,7 +17,10 @@ services:
   app:
     depends_on:
       - mysqldb
-    build: /spring-app  
+    workdir: /spring-app
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: rayenkharbeche/devops  
     container_name: tpachatd
     restart: on-failure
