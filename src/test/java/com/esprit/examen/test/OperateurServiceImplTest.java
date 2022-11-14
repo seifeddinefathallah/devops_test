@@ -33,18 +33,7 @@ public class OperateurServiceImplTest {
 	
     @Autowired
     private OperateurRepository opRepository;
-	@Test
-	public void testAddStock() {
-	//	List<Stock> stocks = stockService.retrieveAllStocks();
-	//	int expected=stocks.size();
-		Stock s = new Stock("styyyt",10,15);
-		Stock savedStock= stockService.addStock(s);
-		
-	//	assertEquals(expected+1, stockService.retrieveAllStocks().size());
-		assertNotNull(savedStock.getLibelleStock());
-	//	stockService.deleteStock(savedStock.getIdStock());
-		
-	} 
+	
 	
 	@Test
 	public void testAddoperateur() {
@@ -59,17 +48,7 @@ public class OperateurServiceImplTest {
 		
 	} 
 	
-	/*@Test
-	public void testAddStockOptimized() {
-
-		Stock s = new Stock("stock tttttt",10,100);
-		Stock savedStock= stockService.addStock(s);
-		assertNotNull(savedStock.getIdStock());
-		assertSame(10, savedStock.getQte());
-		assertTrue(savedStock.getQteMin()>0);
-		//stockService.deleteStock(savedStock.getIdStock());
-		
-	} */
+	
 	
 	@Test
 	public void testDeleteOperateur() {
@@ -79,13 +58,7 @@ public class OperateurServiceImplTest {
 		assertNull(stockService.retrieveStock(savedop.getIdOperateur()));
 	}
 	
-	@Test
-	public void testDeleteStock() {
-		Stock s = new Stock("stock test",30,60);
-		Stock savedStock= stockService.addStock(s);
-		stockService.deleteStock(savedStock.getIdStock());
-		assertNull(stockService.retrieveStock(savedStock.getIdStock()));
-	}
+	
 	@Test
 	public void testupdateStock() {
 
@@ -95,14 +68,14 @@ public class OperateurServiceImplTest {
         Assertions.assertThat(updateStock.getLibelleStock()).isEqualTo("stock update");
 	}
 	
-	/*@Test
+	@Test
 	public void testupdateOperateur() {
 
 		Operateur op = opRepository.findById(36L).get();
 		op.setPassword("888");
         Operateur updateOp =  opRepository.save(op);
-        Assertions.assertThat(updateOp.getLibelleStock()).isEqualTo("stock update");
-	}*/
+        Assertions.assertThat(updateOp.getPassword()).isEqualTo("888");
+	}
 	/*@Test
 	 public void testretrieveStock(){
 
@@ -117,6 +90,15 @@ public class OperateurServiceImplTest {
         List<Stock> stock = stockRepository.findAll();
         System.out.println("la liste de Stock est" +stock);
         Assertions.assertThat(stock).isNotEmpty();
+
+    }
+	
+	@Test
+    public void testgetListOfOperateur(){
+
+        List<Operateur> ops= (List<Operateur>) opRepository.findAll();
+        System.out.println("la liste de operateurs est" +ops);
+        Assertions.assertThat(ops).isNotEmpty();
 
     }
 }
