@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.esprit.examen.entities.Operateur;
 import com.esprit.examen.entities.Stock;
+import com.esprit.examen.repositories.OperateurRepository;
 import com.esprit.examen.repositories.StockRepository;
 import com.esprit.examen.services.IOperateurService;
 import com.esprit.examen.services.IStockService;
@@ -30,10 +31,8 @@ public class OperateurServiceImplTest {
 	@Autowired
 	private StockRepository stockRepository;
 	
-
-
-	//@Autowired
-	//private OperateurRepository opRepository;
+    @Autowired
+    private OperateurRepository opRepository;
 	@Test
 	public void testAddStock() {
 	//	List<Stock> stocks = stockService.retrieveAllStocks();
@@ -48,7 +47,7 @@ public class OperateurServiceImplTest {
 	} 
 	
 	@Test
-	public void testAddop() {
+	public void testAddoperateur() {
 	//	List<Stock> stocks = stockService.retrieveAllStocks();
 	//	int expected=stocks.size();
 		Operateur s = new Operateur("rayen","seif","rrrrr");
@@ -60,7 +59,7 @@ public class OperateurServiceImplTest {
 		
 	} 
 	
-	@Test
+	/*@Test
 	public void testAddStockOptimized() {
 
 		Stock s = new Stock("stock tttttt",10,100);
@@ -70,7 +69,15 @@ public class OperateurServiceImplTest {
 		assertTrue(savedStock.getQteMin()>0);
 		//stockService.deleteStock(savedStock.getIdStock());
 		
-	} 
+	} */
+	
+	@Test
+	public void testDeleteOperateur() {
+		Operateur s = new Operateur("rayen","seif","rrrrr");
+		Operateur savedop= operateurService.addOperateur(s);
+		stockService.deleteStock(savedop.getIdOperateur());
+		assertNull(stockService.retrieveStock(savedop.getIdOperateur()));
+	}
 	
 	@Test
 	public void testDeleteStock() {
@@ -79,13 +86,22 @@ public class OperateurServiceImplTest {
 		stockService.deleteStock(savedStock.getIdStock());
 		assertNull(stockService.retrieveStock(savedStock.getIdStock()));
 	}
-	/*@Test
+	@Test
 	public void testupdateStock() {
 
 		Stock stock = stockRepository.findById(36L).get();
 		stock.setLibelleStock("stock update");
         Stock updateStock =  stockRepository.save(stock);
         Assertions.assertThat(updateStock.getLibelleStock()).isEqualTo("stock update");
+	}
+	
+	/*@Test
+	public void testupdateOperateur() {
+
+		Operateur op = opRepository.findById(36L).get();
+		op.setPassword("888");
+        Operateur updateOp =  opRepository.save(op);
+        Assertions.assertThat(updateOp.getLibelleStock()).isEqualTo("stock update");
 	}*/
 	/*@Test
 	 public void testretrieveStock(){
