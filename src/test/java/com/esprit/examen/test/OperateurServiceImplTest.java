@@ -59,14 +59,14 @@ public class OperateurServiceImplTest {
 	
 	
 	
-	@Test
+	/*@Test
 	public void testupdateOperateur() {
 
 		Operateur op = opRepository.findById(36L).get();
 		op.setPassword("888");
         Operateur updateOp =  opRepository.save(op);
         Assertions.assertThat(updateOp.getPassword()).isEqualTo("888");
-	}
+	}*/
 	
 	
 	@Test
