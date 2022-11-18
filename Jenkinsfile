@@ -57,9 +57,9 @@ pipeline {
                 echo "Sonarqube"
               
                     sh "  mvn sonar:sonar \
-  -                 Dsonar.projectKey=devopstp \
-  -                 Dsonar.host.url=http://192.168.1.55:9000 \
-  -                 Dsonar.login=8f01db5d13984d2b0d0ea1dc6d416c98b0742607"
+                         -Dsonar.projectKey=devopstp \
+                         -Dsonar.host.url=http://192.168.1.55:9000 \
+                         -Dsonar.login=8f01db5d13984d2b0d0ea1dc6d416c98b0742607"
             }
            } 
             
