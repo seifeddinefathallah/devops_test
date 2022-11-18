@@ -48,7 +48,7 @@ pipeline {
        stage('Nexus'){
              steps{
                  echo "nexus"
-                 sh'mvn clean package deploy:deploy-file -DgroupId=com.esprit.examen -DartifactId=tpachat -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://192.168.1.26:8081/repository/deploymentRepo/ -Dfile=target/tpachat-1.0.jar '
+                 sh'mvn clean package deploy:deploy-file -DgroupId=com.esprit.examen -DartifactId=tpachat -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://192.168.1.55:8081/repository/deploymentRepo/ -Dfile=target/tpachat-1.0.jar '
              }
          }
           stage(' Sonarqube') {
@@ -58,7 +58,7 @@ pipeline {
               
                     sh "  mvn sonar:sonar \
                    -Dsonar.projectKey=devops \
-                   -Dsonar.host.url=http://192.168.1.26:9000 \
+                   -Dsonar.host.url=http://192.168.1.55:9000 \
                    -Dsonar.login=92957ad1a8621101c3e87e894130b5fe46435598"
             }
            } 
