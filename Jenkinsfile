@@ -63,7 +63,7 @@ pipeline {
             }
            } 
             
-          stage('SonarQube analysis') {
+       /*   stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('sonar-instance') {
                     sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
@@ -82,7 +82,7 @@ pipeline {
                         }
                     }
                 }
-        }
+        }*/
      
         stage('Login') {
 
