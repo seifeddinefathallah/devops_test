@@ -63,13 +63,13 @@ pipeline {
             }
            } 
             
-          stage('SonarQube analysis') {
+        /*  stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('sonar-instance') {
                     sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
                 }
             }
-        }
+        }*/
       /*   stage("Quality Gate"){
             options {
                  timeout(time: 1, unit: 'HOURS') 
