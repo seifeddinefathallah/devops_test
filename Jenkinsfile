@@ -70,7 +70,7 @@ pipeline {
                 }
             }
         }
-         stage("Quality Gate"){
+      /*   stage("Quality Gate"){
             options {
                  timeout(time: 1, unit: 'HOURS') 
                  }
@@ -82,7 +82,7 @@ pipeline {
                         }
                     }
                 }
-        }
+        }*/
      
         stage('Login') {
 
