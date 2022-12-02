@@ -7,7 +7,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: rayenkharbeche/tpachatd
+    image: rayenkharbeche/devops
     restart: on-failure
     container_name: achat
     depends_on:
