@@ -42,7 +42,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - tpstockdb:/var/lib/mysql
+      - tpachato:/var/lib/mysql
 
 networks:
   spring-network:
